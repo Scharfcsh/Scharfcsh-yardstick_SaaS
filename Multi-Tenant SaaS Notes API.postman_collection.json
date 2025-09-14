@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "cfa257df-57ad-4eb4-8963-3dbeef903d9e",
+		"name": "Multi-Tenant SaaS Notes API",
+		"description": "Postman collection for testing Multi-Tenant SaaS Notes backend with MongoDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27528243"
+	},
+	"item": [
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/health"
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Login (Admin Acme)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"admin@acme.test\",\n  \"password\": \"password\"\n}"
+				},
+				"url": "{{baseUrl}}/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Login (Member Acme)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"user@acme.test\",\n  \"password\": \"password\"\n}"
+				},
+				"url": "{{baseUrl}}/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Login (Admin Globex)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"admin@globex.test\",\n  \"password\": \"password\"\n}"
+				},
+				"url": "{{baseUrl}}/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Login (Member Globex)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"user@globex.test\",\n  \"password\": \"password\"\n}"
+				},
+				"url": "{{baseUrl}}/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Tenant - Upgrade Plan",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{baseUrl}}/tenants/acme/upgrade"
+			},
+			"response": []
+		},
+		{
+			"name": "Tenant - Invite User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"newuser@acme.test\",\n  \"role\": \"member\"\n}"
+				},
+				"url": "{{baseUrl}}/tenants/acme/invite"
+			},
+			"response": []
+		},
+		{
+			"name": "Notes - Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Meeting Notes\",\n  \"content\": \"Discussed roadmap\"\n}"
+				},
+				"url": "{{baseUrl}}/notes"
+			},
+			"response": []
+		},
+		{
+			"name": "Notes - List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": "{{baseUrl}}/notes"
+			},
+			"response": []
+		},
+		{
+			"name": "Notes - Get by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": "{{baseUrl}}/notes/{{noteId}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Notes - Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Updated Meeting Notes\",\n  \"content\": \"New decisions\"\n}"
+				},
+				"url": "{{baseUrl}}/notes/{{noteId}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Notes - Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": "{{baseUrl}}/notes/{{noteId}}"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:4000"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "noteId",
+			"value": ""
+		}
+	]
+}
