@@ -9,6 +9,9 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "YardStick SaaS",
   description: "A minimal, notes application",
+  icons: {
+    icon: '/favicon.ico',
+  }
 }
 
 export default function RootLayout({
@@ -18,6 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body className={`font-sans antialiased ${GeistSans.variable} ${GeistMono.variable}`}>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
