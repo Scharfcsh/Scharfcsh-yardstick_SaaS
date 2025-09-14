@@ -7,9 +7,8 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Notes - Obsidian Style",
-  description: "A minimal, dark-themed notes application",
-  generator: "v0.app",
+  title: "YardStick SaaS",
+  description: "A minimal, notes application",
 }
 
 export default function RootLayout({
